@@ -5,12 +5,19 @@ public class TrabajoF {
     public static void main(String[] args) {
         boolean resp = true;
         Policia policia1 = new Policia("Nicolas", "Etchevarne", 000001);
+        Policia policia2 = new Policia("Tony", "Gambino", 000002);
         ArmaCorta armaCorta1 = new ArmaCorta(policia1, 9, 8, 50, "Desert Eagle", "EN USO", true);
-        ArmaLarga armaLarga1 = new ArmaLarga(policia1, 30, 500, "M4A1", 30, "EN USO", true, "Uso para operativos tácticos", 11);
-           ArmaLarga armaLarga2 = new ArmaLarga(policia1, 12, 700, "AMW", 30, "EN USO", true, "Uso para operativos tácticos", 22);
+        ArmaLarga armaLarga1 = new ArmaLarga(policia1, 30, 500, "M4A1", 3, "EN USO", true, "Operativos tacticos", 11);
+        ArmaLarga armaLarga2 = new ArmaLarga(policia1, 12, 700, "AMW", 30, "EN USO", true, "Operativos tacticos", 22);
 
-      armaLarga1.comparar(armaLarga2, resp);
-     
+      
+   // AGREGARLE UN ARMA A ALGUN POLICIA
+     policia2.agregarArma(armaLarga1); //AGREGA A TONY LA M4A1
+         policia2.MostrarInfo("");  //Muestra la info de tony
+        
+        policia2.mostrarArmas(); //Armas de tony
+       
+   armaLarga1.MostrarInfo("");
 
     }
 
@@ -41,4 +48,4 @@ public class TrabajoF {
    ///PARA SABER SI ESTA EN CONDICIONES DE USO TIENE QUE ESTAR "EN USO" Y SER CALIBRE MAYOR O IGUAL A 9
    armaCorta1.enCondiciones(resp);
     
-*/
+ */
