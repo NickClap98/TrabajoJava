@@ -8,31 +8,51 @@ public abstract class Arma {
     private int municiones;
     private String marca;
     private String estado;
-
+    private boolean Sello;
+    private String justificacion;
+    private int  NiveldeArma;
+    private boolean automatica;
+    
+    
+    
     public Arma(Policia policia, int municiones, int alcance, String marca, int calibre, String estado) {
         this.alcance = alcance;
         this.calibre = calibre;
         this.municiones = municiones;
         this.marca = marca;
         this.estado = estado;
-    }
-//COMPARACION EN CALIBRE Y ESTADO IGNORANDO LAS MINUSCULAS Y MAYUSCULAS
-
-    public boolean enCondiciones(boolean condiciones) {
-        if (calibre >= 9 && estado.equalsIgnoreCase("EN USO")) {
-            System.out.println("Si esta en condiciones ");
-        } else {
-            System.out.println("No esta en condiciones");
-        }
-        return condiciones;
+       
+        
+        
+        
         
         
         
     }
+    
+     public boolean tieneSello() {
+        return Sello;
+    }
 
+    public void setSello(boolean tieneSello) {
+        this.Sello = tieneSello;
+    }
+    public String justificacionUso() {
+        return  justificacion;
+    }
 
+    public void setjustificacionUso(String  justificacionUso) {
+        this.justificacion =  justificacionUso;
+    }
+      public int getNivel() {
+        return  NiveldeArma;
+    }
 
-public int getAlcance() {
+    public void setNivel(int nivel) {
+        this. NiveldeArma = nivel;
+    }
+    
+    public int getAlcance() {
         return alcance;
     }
 
@@ -74,7 +94,6 @@ public int getAlcance() {
 
 
 
- private boolean automatica;
 
     public boolean esAutomatica() {
         return automatica;
@@ -83,6 +102,38 @@ public int getAlcance() {
     public void setAutomatica(boolean automatica) {
         this.automatica = automatica;
     }
+    
+       /// COMPARACION DE ALCANCE MAYOR QUE 200m 
+    public boolean disparoALargaDistancia(boolean Dist_disp) {
+
+        if (this.getAlcance()> 200) {
+            System.out.println(" Si dispara a larga distancia");
+        } else {
+            System.out.println(" No dispara a larga distancia");
+
+        }
+        return Dist_disp;
+
+    }
+    
+    
+//COMPARACION EN CALIBRE Y ESTADO IGNORANDO LAS MINUSCULAS Y MAYUSCULAS
+
+    public boolean enCondiciones(boolean condiciones) {
+        if (calibre >= 9 && estado.equalsIgnoreCase("EN USO")) {
+            System.out.println("Si esta en condiciones ");
+        } else {
+            System.out.println("No esta en condiciones");
+        }
+        return condiciones;
+        
+        
+        
+    }
+
+
+
+
 
     void MostrarInfo(String string) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -100,18 +151,7 @@ class ArmaCorta extends Arma {
         
     }
 
-    /// COMPARACION DE ALCANCE MAYOR QUE 200m 
-    public boolean disparoALargaDistancia(boolean Dist_disp) {
-
-        if (this.getAlcance()> 200) {
-            System.out.println(" Si dispara a larga distancia");
-        } else {
-            System.out.println(" No dispara a larga distancia");
-
-        }
-        return Dist_disp;
-
-    }
+ 
 
     
 
@@ -127,27 +167,27 @@ class ArmaCorta extends Arma {
 
 class ArmaLarga extends Arma {
 
-    boolean tieneSello;
-    String  justificacionUso;
-    int  NiveldeArma;
+ 
+ 
+    
 
     public ArmaLarga(Policia policia, int municiones, int alcance, String marca, int calibre, String estado, boolean tieneSello, String  justificacionUso, int nivel) {
         super(policia, municiones, alcance, marca, calibre, estado);
-        this.tieneSello = tieneSello;
-        this. justificacionUso =  justificacionUso;
-        this. NiveldeArma = nivel;
+        this.setSello(tieneSello); 
+        this.setjustificacionUso(justificacionUso);
+        this.setNivel(nivel);
     }
 //Comparacion de armas
 
     public boolean comparar(ArmaLarga otraArma, boolean comp) {
-       if( NiveldeArma < otraArma. NiveldeArma){
+       if( this.getNivel() < otraArma.getNivel()){
           System.out.println("La Arma: "+getMarca()+" es de nivel "+getNivel()+" Tiene menos nivel que "+otraArma.getMarca()+"\nQue su nivel es: "+ otraArma.getNivel());
        
        } else{System.out.println("La Arma: "+getMarca()+" es de nivel "+getNivel()+" Tiene mas nivel que "+otraArma.getMarca()+"\nQue su nivel es: "+ otraArma.getNivel());}
         return comp;
     }
     //MOSTRAR INFO DE ARMA LARGA
-
+/*
     public boolean tieneSello() {
         return tieneSello;
     }
@@ -156,26 +196,15 @@ class ArmaLarga extends Arma {
         this.tieneSello = tieneSello;
     }
 
-    public String justificacionUso() {
-        return  justificacionUso;
-    }
-
-    public void setjustificacionUso(String  justificacionUso) {
-        this. justificacionUso =  justificacionUso;
-    }
-
-    public int getNivel() {
-        return  NiveldeArma;
-    }
-
-    public void setNivel(int nivel) {
-        this. NiveldeArma = nivel;
-    }
+    
 
   
 
+  */
+
     public void MostrarInfo(String dato) {
-        dato = ("Municiones: " + getMuniciones()+ "\n Alcance: " + getAlcance() + " metros" + "\n Marca: " + getMarca() + "\n Calibre: " + getCalibre() + "\n Estado: " + getEstado() + "\n Tiene Sello: " + tieneSello() + "\n Justificacion de uso: " + justificacionUso + "\n"
+        dato = ("Municiones: " + getMuniciones()+ "\n Alcance: " + getAlcance() + " metros" + "\n Marca: " + getMarca() + "\n Calibre: " + getCalibre() + "\n Estado: " + getEstado() + "\n Tiene Sello: " + tieneSello() + "\n Justificacion de uso: " +
+                this.justificacionUso() + "\n"
                 + "Nivel: " + getNivel());
         System.out.println(dato);
 
