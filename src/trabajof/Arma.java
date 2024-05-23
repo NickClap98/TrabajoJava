@@ -22,6 +22,7 @@ public abstract class Arma {
         this.marca = marca;
         this.estado = estado;
        
+       
         
         
         
@@ -37,13 +38,21 @@ public abstract class Arma {
     public void setSello(boolean tieneSello) {
         this.Sello = tieneSello;
     }
+    
+      public boolean esAutomatica() {
+        return automatica;}
+
+    public void setAutomatica(boolean automatica) {
+        this.automatica = automatica;
+    }
     public String justificacionUso() {
         return  justificacion;
     }
 
     public void setjustificacionUso(String  justificacionUso) {
-        this.justificacion =  justificacionUso;
-    }
+        this.justificacion =  justificacionUso;}
+    
+    
       public int getNivel() {
         return  NiveldeArma;
     }
@@ -95,26 +104,9 @@ public abstract class Arma {
 
 
 
-    public boolean esAutomatica() {
-        return automatica;
-    }
-
-    public void setAutomatica(boolean automatica) {
-        this.automatica = automatica;
-    }
+  
     
-       /// COMPARACION DE ALCANCE MAYOR QUE 200m 
-    public boolean disparoALargaDistancia(boolean Dist_disp) {
-
-        if (this.getAlcance()> 200) {
-            System.out.println(" Si dispara a larga distancia");
-        } else {
-            System.out.println(" No dispara a larga distancia");
-
-        }
-        return Dist_disp;
-
-    }
+    
     
     
 //COMPARACION EN CALIBRE Y ESTADO IGNORANDO LAS MINUSCULAS Y MAYUSCULAS
@@ -135,79 +127,6 @@ public abstract class Arma {
 
 
 
-    void MostrarInfo(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }
 //CLASE ARMACORTA QUE A SU VEZ ES UNA EXTENSION DE ARMA
 
-class ArmaCorta extends Arma {
-
-  
-
-    public ArmaCorta(Policia policia, int alcance, int calibre, int municiones, String marca, String estado,  boolean automatica) {
-        super(policia,alcance,municiones, marca, calibre, estado);
-        
-        
-    }
-
- 
-
-    
-
-    //MOSTRAR INFO DE ARMA CORTA   
-    public void MostrarInfo(String dato) {
-        dato = ("Municiones: " + this.getMuniciones() + "\n Alcance: " + this.getAlcance() + " metros" + "\n Marca: " + this.getMarca() + "\n Calibre: " + this.getCalibre() + "\n Estado: " + this.getEstado() + "\n"
-                + "Es Automatica?: " + esAutomatica());
-        System.out.println(dato);
-
-    }
-}
-//CLASE ARMA LARGA QUE A SU VEZ ES UNA EXTENSION DE ARMA
-
-class ArmaLarga extends Arma {
-
- 
- 
-    
-
-    public ArmaLarga(Policia policia, int municiones, int alcance, String marca, int calibre, String estado, boolean tieneSello, String  justificacionUso, int nivel) {
-        super(policia, municiones, alcance, marca, calibre, estado);
-        this.setSello(tieneSello); 
-        this.setjustificacionUso(justificacionUso);
-        this.setNivel(nivel);
-    }
-//Comparacion de armas
-
-    public boolean comparar(ArmaLarga otraArma, boolean comp) {
-       if( this.getNivel() < otraArma.getNivel()){
-          System.out.println("La Arma: "+getMarca()+" es de nivel "+getNivel()+" Tiene menos nivel que "+otraArma.getMarca()+"\nQue su nivel es: "+ otraArma.getNivel());
-       
-       } else{System.out.println("La Arma: "+getMarca()+" es de nivel "+getNivel()+" Tiene mas nivel que "+otraArma.getMarca()+"\nQue su nivel es: "+ otraArma.getNivel());}
-        return comp;
-    }
-    //MOSTRAR INFO DE ARMA LARGA
-/*
-    public boolean tieneSello() {
-        return tieneSello;
-    }
-
-    public void setSello(boolean tieneSello) {
-        this.tieneSello = tieneSello;
-    }
-
-    
-
-  
-
-  */
-
-    public void MostrarInfo(String dato) {
-        dato = ("Municiones: " + getMuniciones()+ "\n Alcance: " + getAlcance() + " metros" + "\n Marca: " + getMarca() + "\n Calibre: " + getCalibre() + "\n Estado: " + getEstado() + "\n Tiene Sello: " + tieneSello() + "\n Justificacion de uso: " +
-                this.justificacionUso() + "\n"
-                + "Nivel: " + getNivel());
-        System.out.println(dato);
-
-    }
-
-}

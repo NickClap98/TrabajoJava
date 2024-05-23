@@ -31,6 +31,11 @@ public class Policia {
         }
     }
     
+          
+          
+    
+    
+    
     public void MostrarInfo(String dato){
         dato = "Datos del efectivo: " + nombre + " " + apellido + "\nNumero de placa: " + legajo;
         System.out.println(dato);
