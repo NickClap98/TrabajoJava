@@ -128,5 +128,5 @@ public abstract class Arma {
 
 
 }
-//CLASE ARMACORTA QUE A SU VEZ ES UNA EXTENSION DE ARMA
+
 
