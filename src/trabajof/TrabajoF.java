@@ -8,16 +8,16 @@ public class TrabajoF {
         Policia policia2 = new Policia("Tony", "Gambino", 000002);
         ArmaCorta armaCorta1 = new ArmaCorta(policia1, 9, 8, 50, "Desert Eagle", "EN USO", true);
         ArmaLarga armaLarga1 = new ArmaLarga(policia1, 30, 500, "M4A1", 3, "EN USO", true, "Operativos tacticos", 11);
-        ArmaLarga armaLarga2 = new ArmaLarga(policia1, 12, 700, "AMW", 30, "EN USO", true, "Operativos tacticos", 22);
-
+        ArmaLarga armaLarga2 = new ArmaLarga(policia1, 5, 1200, "AMW", 30, "EN USO", true, "Operativos tacticos", 22);
+        ArmaCorta Glock18 = new ArmaCorta(policia1,20,3,45,"Glock 18","EN USO", true);
       
    // AGREGARLE UN ARMA A ALGUN POLICIA
      policia2.agregarArma(armaLarga1); //AGREGA A TONY LA M4A1
          policia2.MostrarInfo("");  //Muestra la info de tony
-        
+        policia2.agregarArma(Glock18);
         policia2.mostrarArmas(); //Armas de tony
-       
-   armaLarga1.MostrarInfo("");
+     
+   Glock18.MostrarInfo("");
 
     }
 
